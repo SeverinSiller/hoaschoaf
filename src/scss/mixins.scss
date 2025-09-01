@@ -1,0 +1,23 @@
+@use 'sass:map'; // <— neue modulare Map-API
+
+$breakpoints: (
+  mobileXS: '(max-width: 595px)',
+  mobile: '(max-width: 768px)',
+  tablet-down: '(max-width: 1100px)',
+  tablet: '(min-width: 769px) and (max-width: 1100px)',
+  laptop-down: '(max-width: 1440px)',
+  laptop: '(min-width: 1101px) and (max-width: 1440px)',
+  desktopS: '(min-width: 1441px) and (max-width: 1700px)',
+  desktop: '(min-width: 1701px)',
+  k4: '(min-width: 2560px)',
+);
+
+@mixin respond($bp) {
+  $q: map.get($breakpoints, $bp); // <— statt map-get()
+  @if $q == null {
+    @error "Unknown breakpoint: #{$bp}. Available: #{map.keys($breakpoints)}";
+  }
+  @media #{$q} {
+    @content;
+  }
+}

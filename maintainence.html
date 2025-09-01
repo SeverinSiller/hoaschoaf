@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Seite in Wartung</title>
+    <style>
+      :root {
+        --primary-color: #e61b21;
+        --secondary-color: #ffffff;
+        --font-family: 'Poppins', sans-serif;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(to bottom, #000000, #0b0b0b);
+        color: var(--secondary-color);
+        font-family: var(--font-family);
+        text-align: center;
+      }
+
+      .message-box {
+        padding: 2rem;
+        border: 2px solid var(--primary-color);
+        border-radius: 12px;
+        background-color: rgba(0, 0, 0, 0.6);
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      button {
+        background-color: #ffffff; /* var(--secondary-color) */
+        border: none;
+        padding: 0.5rem 1rem;
+        font-size: 14px;
+        font-family: 'Poppins', sans-serif; /* var(--font-regular-family) */
+        border-radius: 9px;
+        margin: 2rem; /* calc(var(--regular-spacing)) */
+        transition: background-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
+        cursor: pointer;
+      }
+
+      button a {
+        color: black;
+        text-decoration: none;
+      }
+
+      button a:hover {
+        color: #ffffff; /* var(--font-regular-color) */
+      }
+
+      button:hover {
+        background-color: #e61b21; /* var(--emphasis-color) */
+        color: #ffffff; /* var(--font-regular-color) */
+        box-shadow: 0 0 20px #e61b21; /* optionaler Hover-Glow */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="message-box">
+      <h1>Seite in Wartung</h1>
+      <p>Dieser Teil der Website wird bald hinzugefügt, da unsere Seite gerade neu ist.</p>
+      <div class="button-container">
+        <button onclick="window.location.href='index.html'">Zurück zur Startseite</button>
+      </div>
+    </div>
+  </body>
+</html>

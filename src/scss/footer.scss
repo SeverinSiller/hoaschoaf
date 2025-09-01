@@ -1,0 +1,51 @@
+@use '../scss/mixins' as m;
+@use '../scss/variables' as *;
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  background-color: $primary-color;
+  padding: calc($regular-spacing / 2) $regular-spacing;
+
+  ul {
+    list-style: none;
+
+    li {
+      user-select: none;
+      display: inline-block;
+      text-transform: uppercase;
+      font-family: $font-regular-family;
+      font-size: $font-nav-size;
+      letter-spacing: $font-nav-letter-spacing;
+      color: $font-regular-color;
+      padding-left: 1rem;
+      transition: transform 0.2s ease-in;
+
+      @include m.respond(tablet-down) {
+        font-size: 11px;
+      }
+
+      &:hover {
+        cursor: pointer;
+        transform: translateY(-3px);
+      }
+
+      a {
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+
+  img {
+    margin-left: 1rem;
+    transition: transform 0.1s ease-in;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.1);
+    }
+  }
+}

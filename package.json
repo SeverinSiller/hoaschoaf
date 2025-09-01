@@ -1,0 +1,20 @@
+{
+  "name": "hoaschoaf",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "colcade": "^0.2.0"
+  },
+  "devDependencies": {
+    "install": "^0.13.0",
+    "npm": "^11.5.2",
+    "vite": "^7.1.2"
+  }
+}

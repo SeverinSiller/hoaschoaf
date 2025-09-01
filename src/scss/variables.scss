@@ -1,0 +1,109 @@
+// variables.scss
+
+// -----------------------------
+// Breakpoints
+// -----------------------------
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1440px;
+// -----------------------------
+// Colors
+// -----------------------------
+$primary-color: #e61b21;
+$secondary-color: #ffffff;
+$emphasis-color: $primary-color;
+
+// -----------------------------
+// Backgrounds
+// -----------------------------
+$background-gradient: linear-gradient(to bottom, #000000, #0b0b0b);
+
+// -----------------------------
+// Fonts - Regular
+// -----------------------------
+$font-regular-family: 'Poppins', sans-serif;
+$font-regular-weight: 400;
+$font-regular-color: $secondary-color;
+$font-regular-size: 2rem;
+$font-regular-size-desktopS: 1.5rem;
+$font-regular-size-laptop: 1.25rem;
+$font-regular-size-tablet: 1rem;
+$font-regular-size-mobile: 0.875rem;
+
+// -----------------------------
+// Fonts - Headings
+// -----------------------------
+$font-headings-family: 'Poppins', sans-serif;
+$font-headings-weight: 900;
+$font-headings-color: $secondary-color;
+
+// Heading Sizes
+$font-h1-size-min: 1rem;
+$font-h2-size: 8rem;
+$font-h3-size: 7rem;
+$font-h4-size: $font-regular-size;
+
+//heading Sizes DesktopS
+$font-h2-size-desktopS: 7rem;
+$font-h3-size-desktopS: 6rem;
+
+//heading Sizes laptop
+$font-h2-size-laptop: 6rem;
+$font-h3-size-laptop: 5rem;
+
+//heading Sizes tablet
+$font-h2-size-tablet: 4rem;
+$font-h3-size-tablet: 3rem;
+
+// Heading Sizes Mobile
+$font-h2-size-mobile: 2.5rem;
+$font-h3-size-mobile: 2rem;
+$font-h4-size-mobile: 1.5rem;
+
+// Decorative / Accents
+$font-accent-family: 'Elsie Swash Caps', serif;
+$font-h1-support-size: $font-h2-size;
+$font-h1-support-size-laptop: $font-h2-size-laptop;
+$font-h1-support-size-mobile: 10vw;
+$font-nav-size: 0.875rem;
+$font-nav-letter-spacing: 2px;
+
+// -----------------------------
+// Layout Widths
+// -----------------------------
+$laptop-l: 80%;
+$tablet: 90%;
+$mobile-sm: 95%;
+
+// -----------------------------
+// Section Spacings
+// -----------------------------
+$regular-spacing: 2rem;
+$regular-spacing-mobile: 1rem;
+// -----------------------------
+// Keyframes
+// -----------------------------
+@keyframes loading-spinner-animation {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+  }
+}
+
+@keyframes blend-in {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+  }
+}
+
+@keyframes blend-out {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+  }
+}

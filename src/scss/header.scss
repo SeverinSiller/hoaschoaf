@@ -1,0 +1,177 @@
+@use '../scss/mixins' as m;
+@use '../scss/variables' as *;
+
+header {
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: calc($regular-spacing * 0.75) calc($regular-spacing * 2);
+  z-index: 1100; // Header sicher über Content
+
+  img {
+    margin-left: -1%;
+    cursor: pointer;
+    margin-left: 1rem;
+    transition: transform 0.1s ease-in;
+
+    &:hover {
+      cursor: pointer;
+      transform: scale(1.05);
+    }
+  }
+
+  /* Desktop-Navigation */
+  nav {
+    color: $font-regular-color;
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      li {
+        user-select: none;
+        display: inline-block;
+        text-transform: uppercase;
+        font-family: $font-regular-family;
+        font-size: $font-nav-size;
+        letter-spacing: $font-nav-letter-spacing;
+        padding-left: 1rem;
+        transition: transform 0.2s ease-in, color 0.2s ease-in;
+
+        &:hover {
+          cursor: pointer;
+          color: $emphasis-color;
+          transform: translateY(-3px);
+        }
+      }
+    }
+  }
+
+  /* Hamburger Button (mobil sichtbar) */
+  .hamburger {
+    display: none;
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1200; // über dem Nav-Overlay
+
+    /* Bars – funktioniert mit <span class="bar"> und fallback für <span> */
+    .bar,
+    > span,
+    ul > span {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: $emphasis-color;
+      box-shadow: 0 0 20px $emphasis-color;
+      transition: transform 0.3s ease, opacity 0.2s ease, top 0.3s ease;
+    }
+
+    .bar:nth-child(1),
+    > span:nth-child(1),
+    ul > span:nth-child(1) {
+      top: 25%;
+    }
+    .bar:nth-child(2),
+    > span:nth-child(2),
+    ul > span:nth-child(2) {
+      top: 50%;
+    }
+    .bar:nth-child(3),
+    > span:nth-child(3),
+    ul > span:nth-child(3) {
+      top: 75%;
+    }
+
+    &.is-active {
+      .bar:nth-child(1),
+      > span:nth-child(1),
+      ul > span:nth-child(1) {
+        top: 50%;
+        transform: rotate(45deg);
+      }
+      .bar:nth-child(2),
+      > span:nth-child(2),
+      ul > span:nth-child(2) {
+        opacity: 0;
+      }
+      .bar:nth-child(3),
+      > span:nth-child(3),
+      ul > span:nth-child(3) {
+        top: 50%;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+
+  /* -------- Mobile Overlay -------- */
+  @include m.respond(mobile) {
+    padding: calc($regular-spacing-mobile * 2) calc($regular-spacing-mobile * 2);
+
+    img {
+      width: 8rem;
+    }
+
+    .hamburger {
+      display: block;
+    }
+
+    /* Statt display:none: animierbares Overlay */
+    nav {
+      position: fixed;
+      inset: 0;
+      z-index: 1100;
+      display: flex; // nicht toggeln → Animation bleibt smooth
+      align-items: center;
+      justify-content: center;
+      background: rgba(0, 0, 0, 0.92);
+      transform: translateY(-100%); // Start außerhalb
+      transition: transform 0.35s ease, visibility 0s linear 0.35s;
+      visibility: hidden;
+      pointer-events: none;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+
+        li {
+          margin: 1rem 0;
+
+          a {
+            font-family: $font-regular-family;
+            font-size: $font-h3-size-mobile;
+            color: $font-regular-color;
+            text-transform: uppercase;
+            letter-spacing: $font-nav-letter-spacing;
+          }
+        }
+      }
+
+      &.is-open {
+        transform: translateY(0);
+        visibility: visible;
+        pointer-events: auto;
+        transition: transform 0.35s ease;
+      }
+    }
+  }
+}
+
+/* Body/HTML scroll lock, wenn Menü offen */
+html.no-scroll,
+body.no-scroll {
+  overflow: hidden;
+}

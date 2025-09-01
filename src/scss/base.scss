@@ -1,0 +1,763 @@
+@use '../scss/mixins.scss' as m;
+@use '../scss/variables' as *;
+
+// base.scss
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background: $background-gradient;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+
+  h1 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: calc($regular-spacing * 0.75) $regular-spacing;
+
+    font-family: $font-headings-family;
+    font-weight: $font-headings-weight;
+    color: $font-headings-color;
+    font-size: $font-h1-size-min;
+  }
+
+  h2 {
+    width: 100%;
+    font-family: $font-headings-family;
+    font-weight: $font-headings-weight;
+    color: $font-headings-color;
+    font-size: $font-h2-size;
+
+    @include m.respond(laptop) {
+      font-size: $font-h2-size-laptop;
+    }
+
+    @include m.respond(tablet) {
+      font-size: $font-h2-size-tablet;
+    }
+
+    @include m.respond(mobile) {
+      font-size: $font-h2-size-mobile;
+    }
+  }
+
+  a {
+    color: $font-regular-color;
+    text-decoration: none;
+
+    &:hover {
+      color: $emphasis-color;
+    }
+  }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+
+    button {
+      background-color: $emphasis-color;
+      border: none;
+      padding: 0.5rem 1rem;
+      font-size: 14px;
+      font-family: $font-regular-family;
+      border-radius: 9px;
+      color: $font-regular-color;
+      margin: $regular-spacing;
+      text-transform: uppercase;
+      transition: background-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
+      cursor: pointer;
+
+      @include m.respond(tablet-down) {
+        font-size: $font-regular-size-tablet;
+      }
+
+      @include m.respond(tablet-down) {
+        font-size: $font-regular-size-mobile;
+      }
+
+      &:hover {
+        background-color: $secondary-color;
+        color: $emphasis-color;
+        box-shadow: 0 0 20px $emphasis-color;
+      }
+    }
+  }
+
+  .emphasis {
+    color: $emphasis-color;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .loading-spinner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: blend-in 0.2s ease-in;
+
+    svg {
+      animation: loading-spinner-animation 0.6s linear 0.2s infinite;
+    }
+  }
+
+  .hidden {
+    display: none;
+  }
+}
+
+.events-section {
+  width: 100%;
+
+  .events-title {
+    width: 100.5%;
+    transform: translateX(-0.5%);
+    position: relative;
+    background-image: url(/src/img/hoaschoaf_event_große_crowd.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding: calc($regular-spacing * 2) $regular-spacing;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 10;
+      display: block;
+    }
+
+    h2 {
+      user-select: none;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 100;
+      line-height: 100%;
+
+      .top {
+        align-self: flex-start;
+        padding-left: 15%;
+      }
+
+      .bottom {
+        align-self: flex-end;
+        padding-right: 15%;
+      }
+    }
+  }
+
+  .event-table {
+    width: $laptop-l;
+    margin: auto;
+    padding: calc($regular-spacing * 0.75) $regular-spacing;
+    border-collapse: collapse;
+
+    @include m.respond(tablet) {
+      width: $tablet;
+    }
+
+    .event-info {
+      border-bottom: 1px solid white;
+
+      .day-info {
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 10%;
+        padding-top: 10%;
+
+        .weekday {
+          font-family: $font-regular-family;
+          font-size: $font-regular-size;
+          font-weight: $font-regular-weight;
+
+          @include m.respond(desktopS) {
+            font-size: $font-regular-size-desktopS;
+          }
+
+          @include m.respond(laptop) {
+            font-size: $font-regular-size-laptop;
+          }
+
+          @include m.respond(tablet) {
+            font-size: $font-regular-size-tablet;
+          }
+
+          @include m.respond(mobile) {
+            font-size: $font-regular-size-mobile;
+          }
+        }
+
+        .date {
+          font-family: $font-accent-family;
+          color: $font-headings-color;
+          font-size: $font-h3-size;
+          white-space: nowrap;
+
+          @include m.respond(desktopS) {
+            font-size: $font-h3-size-desktopS;
+          }
+
+          @include m.respond(laptop) {
+            font-size: $font-h3-size-laptop;
+          }
+
+          @include m.respond(tablet) {
+            font-size: $font-h3-size-tablet;
+          }
+
+          @include m.respond(mobile) {
+            font-size: $font-h3-size-mobile;
+          }
+        }
+      }
+
+      .location {
+        font-family: $font-regular-family;
+        font-size: $font-regular-size;
+        font-weight: $font-regular-weight;
+        color: $font-regular-color;
+        padding-left: 10%;
+
+        @include m.respond(desktopS) {
+          font-size: $font-regular-size-desktopS;
+        }
+
+        @include m.respond(laptop) {
+          font-size: $font-regular-size-laptop;
+        }
+
+        @include m.respond(tablet) {
+          font-size: $font-regular-size-tablet;
+        }
+
+        @include m.respond(mobile) {
+          font-size: $font-regular-size-mobile;
+        }
+      }
+    }
+
+    :last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.band-members-slider {
+  position: relative;
+  width: 100%;
+  height: 50rem;
+  overflow: hidden;
+
+  @include m.respond(desktopS) {
+    height: 40rem;
+  }
+
+  @include m.respond(laptop) {
+    height: 30rem;
+  }
+
+  @include m.respond(tablet-down) {
+    height: 20rem;
+  }
+
+  h3 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: $font-h3-size;
+    text-shadow: 0px 0px 20px black;
+    color: $font-headings-color;
+    font-family: $font-headings-family;
+    z-index: 1000;
+    pointer-events: none;
+    text-align: center;
+    white-space: nowrap;
+
+    @include m.respond(desktopS) {
+      font-size: $font-h3-size-desktopS;
+    }
+
+    @include m.respond(laptop) {
+      font-size: $font-h3-size-laptop;
+    }
+
+    @include m.respond(tablet) {
+      font-size: $font-h3-size-tablet;
+    }
+
+    @include m.respond(mobile) {
+      font-size: $font-h3-size-mobile;
+    }
+  }
+
+  .members {
+    position: absolute;
+    top: 0;
+    width: 25%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    user-select: none;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    &::after {
+      content: attr(data-overlay-text);
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: $font-regular-size;
+      font-family: $font-accent-family;
+      font-weight: bold;
+      color: $font-regular-color;
+      transform: translateX(-7.5%);
+      text-shadow: 0 0 20px white;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+
+      @include m.respond(desktopS) {
+        font-size: $font-regular-size-desktopS;
+      }
+
+      @include m.respond(laptop) {
+        font-size: $font-regular-size-laptop;
+      }
+
+      @include m.respond(tablet) {
+        font-size: $font-regular-size-tablet;
+      }
+
+      @include m.respond(mobile) {
+        font-size: $font-regular-size-mobile;
+      }
+    }
+  }
+
+  &:not(.is-sliding) {
+    .members:hover::before,
+    .members:hover::after {
+      opacity: 1;
+    }
+  }
+
+  &.is-sliding {
+    .members {
+      cursor: grabbing;
+      pointer-events: none;
+    }
+
+    .members::before,
+    .members::after {
+      opacity: 0;
+      transition: none;
+    }
+  }
+
+  @for $i from 1 through 10 {
+    .members:nth-child(#{$i}) {
+      $x: ($i - 1) * 80%;
+      transform: translateX($x);
+    }
+  }
+
+  .member1 {
+    background-image: url('../img/band-members-imgs/Bernhard_Hoaschoaf.jpg');
+    background-position: 20%;
+  }
+  .member2 {
+    background-image: url('../img/band-members-imgs/Elena_Hoaschoaf.jpg');
+  }
+  .member3 {
+    background-image: url('../img/band-members-imgs/Florian_Hoaschoaf.jpg');
+  }
+  .member4 {
+    background-image: url('../img/band-members-imgs/Jonas_Hoaschoaf.jpg');
+  }
+  .member5 {
+    background-image: url('../img/band-members-imgs/Matthias_Hoaschoaf.jpg');
+  }
+  .member6 {
+    background-image: url('../img/band-members-imgs/Max_Hoaschoaf.jpg');
+  }
+  .member7 {
+    background-image: url('../img/band-members-imgs/Nikolaus_Hoaschoaf.jpg');
+  }
+  .member8 {
+    background-image: url('../img/band-members-imgs/Severin_Hoaschoaf.jpg');
+  }
+  .member9 {
+    background-image: url('../img/band-members-imgs/Stefan_Hoaschoaf.jpg');
+  }
+  .member10 {
+    background-image: url('../img/band-members-imgs/Thomas_Hoaschoaf.jpg');
+    clip-path: inset(0 20% 0 0);
+    background-position: 60%;
+  }
+}
+
+.about-us {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+
+  h2 {
+    padding: calc($regular-spacing * 5) 0 0 0;
+    width: $laptop-l;
+    align-self: center;
+
+    @include m.respond(desktopS) {
+      font-size: $font-h2-size-desktopS;
+    }
+
+    @include m.respond(laptop) {
+      padding: calc($regular-spacing * 2.5) 0 0 0;
+      font-size: $font-h2-size-laptop;
+    }
+
+    @include m.respond(tablet-down) {
+      padding: $regular-spacing-mobile 0 0 0;
+    }
+
+    @include m.respond(tablet) {
+      font-size: $font-h2-size-tablet;
+      width: $tablet;
+    }
+
+    @include m.respond(mobile) {
+      font-size: $font-h2-size-mobile;
+      width: $mobile-sm;
+    }
+  }
+
+  p {
+    width: $laptop-l;
+    align-self: center;
+    font-family: $font-regular-family;
+    font-size: $font-regular-size;
+    font-weight: $font-regular-weight;
+    color: $font-regular-color;
+    line-height: 100%;
+
+    @include m.respond(desktopS) {
+      font-size: $font-regular-size-desktopS;
+    }
+
+    @include m.respond(laptop) {
+      font-size: $font-regular-size-laptop;
+    }
+
+    @include m.respond(tablet) {
+      font-size: $font-regular-size-tablet;
+      width: $tablet;
+    }
+
+    @include m.respond(mobile) {
+      font-size: $font-regular-size-mobile;
+      width: $mobile-sm;
+    }
+  }
+
+  .about-us-text-2 {
+    margin: $regular-spacing 0rem calc($regular-spacing * 2) 0rem;
+    padding: 0 0 calc($regular-spacing * 2) 0;
+
+    @include m.respond(tablet-down) {
+      margin: $regular-spacing-mobile 0rem calc($regular-spacing-mobile * 2) 0rem;
+      padding: 0 0 $regular-spacing-mobile 0;
+    }
+  }
+
+  .band-action-shots {
+    width: 100%;
+    display: flex;
+    column-gap: calc($regular-spacing / 2);
+
+    img {
+      width: 33.33%;
+    }
+  }
+}
+
+.contact {
+  padding: calc($regular-spacing * 5) 0rem;
+  display: grid;
+  width: $laptop-l;
+  grid-template-areas:
+    'h2 h2 h2 email email email'
+    'contact-text contact-text instagram instagram telephone telephone';
+  grid-template-rows: 8rem 8rem;
+  margin: auto;
+  grid-template-columns: auto 25rem auto auto auto auto;
+  gap: calc($regular-spacing / 2);
+
+  @include m.respond(laptop-down) {
+    padding: calc($regular-spacing * 2.5) 0rem;
+    grid-template-areas:
+      'h2 h2 email email email email'
+      'contact-text instagram instagram telephone telephone telephone';
+    grid-template-columns: auto auto auto auto auto auto;
+    grid-template-rows: 6rem 6rem;
+  }
+
+  @include m.respond(tablet-down) {
+    padding: $regular-spacing-mobile 0rem;
+  }
+
+  @include m.respond(tablet) {
+    grid-template-rows: 4rem 4rem;
+    width: $tablet;
+  }
+
+  @include m.respond(mobile) {
+    grid-template-rows: 3rem 3rem;
+    width: $mobile-sm;
+  }
+
+  @include m.respond(mobileXS) {
+    display: flex;
+    flex-direction: column;
+    width: $mobile-sm;
+  }
+
+  .contact-text {
+    font-family: $font-regular-family;
+    font-size: $font-regular-size;
+    font-weight: $font-regular-weight;
+    color: $font-regular-color;
+    line-height: 100%;
+
+    @include m.respond(desktopS) {
+      font-size: $font-regular-size-desktopS;
+    }
+
+    @include m.respond(laptop) {
+      font-size: $font-regular-size-laptop;
+    }
+
+    @include m.respond(tablet) {
+      font-size: $font-regular-size-tablet;
+    }
+
+    @include m.respond(mobile) {
+      font-size: $font-regular-size-mobile;
+    }
+  }
+
+  .email,
+  .instagram,
+  .telephone {
+    display: flex;
+    align-items: center;
+    column-gap: calc($regular-spacing / 2);
+    background-color: $primary-color;
+    border-radius: 9px;
+    padding: 0rem $regular-spacing;
+    font-family: $font-regular-family;
+    font-size: $font-regular-size;
+    font-weight: $font-regular-weight;
+    color: $font-regular-color;
+
+    @include m.respond(desktopS) {
+      font-size: $font-regular-size-desktopS;
+    }
+
+    @include m.respond(laptop) {
+      font-size: $font-regular-size-laptop;
+      padding: 0rem calc($regular-spacing / 2);
+    }
+
+    @include m.respond(tablet-down) {
+      padding: 0rem calc($regular-spacing-mobile);
+    }
+
+    @include m.respond(tablet) {
+      font-size: $font-regular-size-tablet;
+    }
+
+    @include m.respond(mobile) {
+      font-size: $font-regular-size-mobile;
+    }
+
+    @include m.respond(mobileXS) {
+      padding: calc($regular-spacing-mobile / 3);
+    }
+
+    img {
+      @include m.respond(tablet) {
+        width: 2rem;
+      }
+
+      @include m.respond(mobile) {
+        width: 1.5rem;
+      }
+    }
+
+    &:hover {
+      box-shadow: 0 0 20px $primary-color;
+    }
+  }
+
+  .email {
+    grid-area: email;
+  }
+  .instagram {
+    grid-area: instagram;
+  }
+  .telephone {
+    grid-area: telephone;
+  }
+
+  h2 {
+    grid-area: h2;
+    line-height: 100%;
+  }
+  .contact-text {
+    grid-area: contact-text;
+    align-self: center;
+
+    @include m.respond(mobileXS) {
+      align-self: flex-start;
+    }
+  }
+}
+
+.gallery {
+  padding: $regular-spacing 0rem;
+  width: $laptop-l;
+  margin: auto;
+
+  @include m.respond(tablet) {
+    width: $tablet;
+  }
+
+  @include m.respond(mobile) {
+    width: $mobile-sm;
+  }
+
+  .grid:after {
+    display: block;
+    content: '';
+    clear: both;
+  }
+
+  .grid-col {
+    float: left;
+    width: 32%;
+    margin-right: 2%;
+
+    @include m.respond(tablet-down) {
+      width: 49%;
+    }
+  }
+
+  .grid-col--4 {
+    margin-right: 0;
+  }
+
+  .grid-col--3 {
+    display: none;
+  }
+
+  .grid-col--2 {
+    @include m.respond(tablet-down) {
+      display: none;
+    }
+  }
+
+  .grid-item {
+    background: rgb(221, 0, 0);
+    margin-bottom: 20px;
+    border-radius: 9px;
+  }
+  .grid-item--a {
+    height: 20rem;
+
+    @include m.respond(desktopS) {
+      height: 17rem;
+    }
+
+    @include m.respond(laptop) {
+      height: 15rem;
+    }
+
+    @include m.respond(tablet) {
+      height: 12rem;
+    }
+  }
+  .grid-item--b {
+    height: 25rem;
+
+    @include m.respond(desktopS) {
+      height: 20rem;
+    }
+
+    @include m.respond(laptop) {
+      height: 17.5rem;
+    }
+
+    @include m.respond(tablet) {
+      height: 13rem;
+    }
+
+    @include m.respond(mobile) {
+      height: 9rem;
+    }
+  }
+  .grid-item--c {
+    height: 37.5rem;
+
+    @include m.respond(desktopS) {
+      height: 32.5rem;
+    }
+
+    @include m.respond(laptop) {
+      height: 27.5rem;
+    }
+
+    @include m.respond(tablet) {
+      height: 20rem;
+    }
+
+    @include m.respond(mobile) {
+      height: 18rem;
+    }
+  }
+}
