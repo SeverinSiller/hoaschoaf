@@ -2,7 +2,7 @@ name: Deploy Vite to GH Pages
 
 on:
   push:
-    branches: [master] # dein Branch
+    branches: [master]
 
 permissions:
   contents: read
@@ -18,19 +18,33 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
-      - run: npm ci
-      - run: npm run build
-      # SPA-Fallback (optional, aber empfohlen)
-      - run: cp docs/index.html docs/404.html
-      # CNAME sicherstellen, falls public/CNAME mal fehlt
-      - run: test -f docs/CNAME || echo hoaschoaf.com > docs/CNAME
+
+      # funktioniert mit oder ohne package-lock.json
+      - name: Install deps
+        run: npm ci --no-audit --no-fund || npm install --no-audit --no-fund
+
+      # falls SCSS benutzt wird, ist "sass" nötig
+      - name: Ensure sass
+        run: npm ls sass || npm i -D sass
+
+      - name: Build
+        run: npm run build
+
+      - name: SPA 404 fallback
+        run: cp docs/index.html docs/404.html
+
+      - name: Ensure CNAME
+        run: test -f docs/CNAME || echo hoaschoaf.com > docs/CNAME
+
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./docs
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
