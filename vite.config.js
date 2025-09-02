@@ -1,6 +1,4 @@
 export default {
-  base: '/',
-  build: {
-    outDir: 'docs',
-  },
+  base: '/', // Root-Domain passt so
+  build: { outDir: 'docs' },
 };

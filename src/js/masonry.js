@@ -19,38 +19,33 @@ class Masonry {
       const div = document.createElement('div');
 
       const imgSize = await this.getSize(shownImgs[i]);
-      let recGrade;
-      imgSize.width > imgSize.height + imgSize.height * 0.2 ? (recGrade = 'a') : imgSize.width > imgSize.height ? (recGrade = 'b') : (recGrade = 'c');
+      const recGrade = imgSize.width > imgSize.height + imgSize.height * 0.2 ? 'a' : imgSize.width > imgSize.height ? 'b' : 'c';
 
-      div.classList = `grid-item grid-item--${recGrade}`;
-      div.style.backgroundImage = `url(".${shownImgs[i]}")`;
+      div.className = `grid-item grid-item--${recGrade}`;
+      div.style.backgroundImage = `url("${shownImgs[i]}")`;
       div.style.backgroundSize = 'cover';
+      div.style.backgroundPosition = 'center';
 
       col.append(div);
     }
   }
 
   fetchImages() {
-    const images = import.meta.glob('/src/img/gallery/*.{jpg,png}');
-    const imgsPaths = Object.keys(images);
-    imgsPaths.sort().reverse();
-
-    const newestImgs = imgsPaths.slice(0, SHOW_HOW_MANY_LATEST_IMGS);
-    return newestImgs;
+    const images = import.meta.glob('/src/img/gallery/*.{jpg,jpeg,png,webp}', {
+      eager: true,
+      as: 'url',
+    });
+    const sortedUrls = Object.entries(images)
+      .sort((a, b) => b[0].localeCompare(a[0]))
+      .map(([, url]) => url);
+    return sortedUrls.slice(0, SHOW_HOW_MANY_LATEST_IMGS);
   }
 
   getSize(url) {
     return new Promise((resolve, reject) => {
       const img = new Image();
       img.src = url;
-
-      img.onload = () => {
-        resolve({
-          width: img.width,
-          height: img.height,
-        });
-      };
-
+      img.onload = () => resolve({ width: img.width, height: img.height });
       img.onerror = reject;
     });
   }

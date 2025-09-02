@@ -11,6 +11,9 @@ $breakpoint-xl: 1440px;
 // Colors
 // -----------------------------
 $primary-color: #e61b21;
+:root[data-theme='dark'] {
+  $primary-color: #e50000;
+}
 $secondary-color: #ffffff;
 $emphasis-color: $primary-color;
 
