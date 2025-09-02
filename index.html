@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <script type="module">
+      const isViteDev = typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.DEV;
+      if (!isViteDev) {
+        const p = location.pathname;
+        if (p !== '/docs/' && !p.startsWith('/docs/')) {
+          const nextPath = '/docs/' + (p.startsWith('/') ? p.slice(1) : p);
+          location.replace(nextPath + location.search + location.hash);
+        }
+      }
+    </script>
+
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Hoaschoaf - Brassband Salzburg</title>
     <meta name="description" content="Die offizielle Website der Brassband Hoaschoaf" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="src/scss/main.scss" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps&family=Poppins:wght@400;900&display=swap" rel="stylesheet" />
