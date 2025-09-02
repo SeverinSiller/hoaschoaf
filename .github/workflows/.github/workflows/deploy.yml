@@ -1,0 +1,42 @@
+name: Deploy Vite to GH Pages
+
+on:
+  push:
+    branches: [master] # dein Branch
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      # SPA-Fallback (optional, aber empfohlen)
+      - run: cp docs/index.html docs/404.html
+      # CNAME sicherstellen, falls public/CNAME mal fehlt
+      - run: test -f docs/CNAME || echo hoaschoaf.com > docs/CNAME
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./docs
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
