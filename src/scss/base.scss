@@ -2,6 +2,10 @@
 @use '../scss/variables' as *;
 
 //samsung-internet fix - thanks samsung for not fixing the bug for over 4 years
+:root {
+  --accent: #e50000;
+}
+
 .sb .emphasis {
   color: var(--accent) !important;
   -webkit-text-fill-color: var(--accent) !important;
