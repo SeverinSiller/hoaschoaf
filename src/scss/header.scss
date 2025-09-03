@@ -2,18 +2,22 @@
 @use '../scss/variables' as *;
 
 header {
-  position: absolute;
-  inset: 0 auto auto 0;
-  width: 100%;
+  width: $laptop-l;
   display: flex;
   justify-content: space-between;
-  padding: calc($regular-spacing * 0.75) calc($regular-spacing * 2);
-  z-index: 1100; // Header sicher über Content
+  padding-top: calc($regular-spacing * 0.75);
+  z-index: 1100;
+
+  @include m.respond(tablet) {
+    width: $tablet;
+  }
+
+  @include m.respond(mobile) {
+    width: $mobile-sm;
+  }
 
   img {
-    margin-left: -1%;
     cursor: pointer;
-    margin-left: 1rem;
     transition: transform 0.1s ease-in;
 
     &:hover {
@@ -116,11 +120,18 @@ header {
   }
 
   /* -------- Mobile Overlay -------- */
+  @include m.respond(tablet) {
+    img {
+      width: 9rem;
+    }
+  }
+
+  /* -------- Mobile Overlay -------- */
   @include m.respond(mobile) {
-    padding: calc($regular-spacing-mobile * 2) calc($regular-spacing-mobile * 2);
+    padding-top: calc($regular-spacing-mobile * 2);
 
     img {
-      width: 8rem;
+      width: 5rem;
     }
 
     .hamburger {

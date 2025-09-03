@@ -1,26 +1,31 @@
 // variables.scss
 
 // -----------------------------
+// Colors
+// -----------------------------
+:root {
+  color-scheme: dark;
+  --bg: linear-gradient(to bottom, #000000, #0b0b0b);
+  --text: #ffffff;
+  --accent: #e50000;
+}
+
+$primary-color: var(--accent);
+$secondary-color: var(--text);
+$emphasis-color: $primary-color;
+
+// -----------------------------
 // Breakpoints
 // -----------------------------
 $breakpoint-sm: 480px;
 $breakpoint-md: 768px;
 $breakpoint-lg: 1024px;
 $breakpoint-xl: 1440px;
-// -----------------------------
-// Colors
-// -----------------------------
-$primary-color: #e61b21;
-:root[data-theme='dark'] {
-  $primary-color: #e50000;
-}
-$secondary-color: #ffffff;
-$emphasis-color: $primary-color;
 
 // -----------------------------
 // Backgrounds
 // -----------------------------
-$background-gradient: linear-gradient(to bottom, #000000, #0b0b0b);
+$background-gradient: var(--bg);
 
 // -----------------------------
 // Fonts - Regular
@@ -76,8 +81,8 @@ $font-nav-letter-spacing: 2px;
 // Layout Widths
 // -----------------------------
 $laptop-l: 80%;
-$tablet: 90%;
-$mobile-sm: 95%;
+$tablet: 85%;
+$mobile-sm: 90%;
 
 // -----------------------------
 // Section Spacings

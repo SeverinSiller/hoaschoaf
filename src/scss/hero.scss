@@ -3,28 +3,34 @@
 
 // hero.scss
 .hero-section {
-  position: relative;
   display: flex;
+  flex-direction: column;
   height: 100vh;
   width: 100%;
-  padding: calc($regular-spacing * 0.75) $regular-spacing;
+  justify-content: space-between;
+  align-items: center;
 
   background-image: url('/src/img/gruppenbild_hoaschoaf.png');
   background-repeat: no-repeat;
   background-position: center bottom;
-
-  @include m.respond(tablet-down) {
-    height: 85vh;
-  }
 
   @include m.respond(mobile) {
     background-size: 115vw;
     height: 70vh;
   }
 
-  h1 {
+  .hero-title {
+    display: flex;
     user-select: none;
-    height: auto;
+    width: $laptop-l;
+
+    @include m.respond(tablet) {
+      width: $tablet;
+    }
+
+    @include m.respond(mobile) {
+      width: $mobile-sm;
+    }
 
     .centered-text {
       width: 100%;
