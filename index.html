@@ -14,7 +14,10 @@
 
     <script>
       if (/SamsungBrowser/i.test(navigator.userAgent)) {
-        document.documentElement.classList.add('sb');
+        document.querySelectorAll('.emphasis').forEach((el) => {
+          el.style.color = '#e50000';
+          el.style.webkitTextFillColor = '#e50000';
+        });
       }
     </script>
 
