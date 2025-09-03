@@ -1,6 +1,17 @@
 @use '../scss/mixins.scss' as m;
 @use '../scss/variables' as *;
 
+//samsung-internet fix - thanks samsung for not fixing the bug for over 4 years
+.sb .emphasis {
+  color: var(--accent) !important;
+  -webkit-text-fill-color: var(--accent) !important;
+}
+.sb .loading-spinner svg,
+.sb .loading-spinner svg * {
+  stroke: var(--accent) !important;
+  fill: none !important;
+}
+
 // base.scss
 * {
   margin: 0;
@@ -94,8 +105,7 @@ body {
   }
 
   .emphasis {
-    color: var(accent);
-    -webkit-text-fill-color: var(--accent);
+    color: var(--accent);
   }
 
   .sr-only {
@@ -125,6 +135,8 @@ body {
 
     svg {
       animation: loading-spinner-animation 0.6s linear 0.2s infinite;
+      stroke: var(--accent);
+      fill: none;
     }
   }
 

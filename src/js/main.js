@@ -11,8 +11,6 @@ function init() {
   slider;
   hamburger();
 
-  setTimeout(() => {
-    checkLoading();
-  }, 4000);
+  setTimeout(() => checkLoading(), 4000);
 }
 init();

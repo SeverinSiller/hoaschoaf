@@ -12,6 +12,12 @@
       }
     </script>
 
+    <script>
+      if (/SamsungBrowser/i.test(navigator.userAgent)) {
+        document.documentElement.classList.add('sb');
+      }
+    </script>
+
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Hoaschoaf - Brassband Salzburg</title>
@@ -193,7 +199,7 @@
       <a href="index.html"><img src="src/img/Hoaschoaf_Alternative_Logo.svg" alt="Hoaschoaf Alternative Logo" /></a>
     </footer>
 
-    <div class="loading-spinner hidden">
+    <div class="loading-spinner">
       <svg>
         <use href="src/img/Icons/icons.svg#spinner" />
       </svg>
