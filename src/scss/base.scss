@@ -4,16 +4,27 @@
 //samsung-internet fix - thanks samsung for not fixing the bug for over 4 years
 :root {
   --accent: #e50000;
+} /* dein echtes Rot */
+
+/* Samsung: Textfarbe über text-shadow zeichnen */
+.sb .emphasis {
+  /* echte Textfarbe „abschalten“ */
+  color: transparent !important;
+  -webkit-text-fill-color: transparent !important;
+
+  /* Buchstaben als Schatten ohne Offset zeichnen -> genaues Rot */
+  text-shadow: 0 0 0 var(--accent) !important;
+
+  /* Unterstreichungen etc. auch korrekt */
+  text-decoration-color: var(--accent) !important;
 }
 
-.sb .emphasis {
-  color: var(--accent) !important;
-  -webkit-text-fill-color: var(--accent) !important;
-}
-.sb .loading-spinner svg,
-.sb .loading-spinner svg * {
-  stroke: var(--accent) !important;
-  fill: none !important;
+/* Auswahl lesbar halten */
+.sb .emphasis::selection {
+  background: rgba(229, 0, 0, 0.25);
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  text-shadow: none !important;
 }
 
 // base.scss
