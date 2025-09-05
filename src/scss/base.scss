@@ -19,14 +19,6 @@
   text-decoration-color: var(--accent) !important;
 }
 
-/* Auswahl lesbar halten */
-.sb .emphasis::selection {
-  background: rgba(229, 0, 0, 0.25);
-  color: #fff !important;
-  -webkit-text-fill-color: #fff !important;
-  text-shadow: none !important;
-}
-
 // base.scss
 * {
   margin: 0;
