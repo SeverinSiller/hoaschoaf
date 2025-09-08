@@ -5,11 +5,17 @@ class TitleScaler {
     this.titleContent = this.title.firstElementChild;
     this.timeout = null;
     this.isScaling = false;
+
     window.addEventListener('resize', this.rebounce.bind(this));
     this.rebounce();
   }
 
   rebounce() {
+    const currentWidth = window.innerWidth;
+    if (currentWidth === this._lastWidth) {
+      return;
+    }
+
     this.overlay.classList.remove('hidden');
     this.titleContent.style.fontSize = '1rem';
     this.titleContent.style.letterSpacing = 'normal';
