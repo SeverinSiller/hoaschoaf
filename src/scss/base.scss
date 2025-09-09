@@ -473,6 +473,71 @@ body {
   }
 }
 
+.band-members-popup {
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  z-index: 9999;
+
+  svg {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    fill: $secondary-color;
+  }
+
+  .band-member-popup-image {
+    width: 50%;
+    height: 60%;
+    background-image: url('/src/img/band-members-imgs/Thomas_Hoaschoaf.jpg');
+    background-size: cover;
+    background-position-y: 30%;
+  }
+
+  .band-members-popup-title {
+    position: absolute;
+    bottom: 2rem;
+    left: 2rem;
+    .band-member-name {
+      font-family: $font-headings-family;
+      font-weight: $font-headings-weight;
+      color: $font-headings-color;
+      font-size: $font-h2-size;
+      line-height: 100%;
+    }
+
+    .band-member-short-description {
+      font-family: $font-accent-family;
+      color: $font-headings-color;
+      font-size: $font-h3-size;
+      white-space: nowrap;
+      line-height: 100%;
+
+      @include m.respond(desktopS) {
+        font-size: $font-h3-size-desktopS;
+      }
+
+      @include m.respond(laptop) {
+        font-size: $font-h3-size-laptop;
+      }
+
+      @include m.respond(tablet) {
+        font-size: $font-h3-size-tablet;
+      }
+
+      @include m.respond(mobile) {
+        font-size: $font-h3-size-mobile;
+      }
+    }
+  }
+}
+
 .about-us {
   display: flex;
   width: 100%;
