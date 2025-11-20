@@ -9,7 +9,6 @@ class TitleScaler {
     this.timeout = null;
     this.isScaling = false;
     this._lastWidth = -1;
-    this._hasInitialScale = false;
 
     window.addEventListener('resize', this.rebounce.bind(this));
     this.rebounce(); // first run
@@ -25,10 +24,12 @@ class TitleScaler {
 
     this._lastWidth = currentWidth;
 
+    /*
     // only show overlay for the first scale
     if (!this._hasInitialScale) {
       this.overlay.classList.remove('hidden');
     }
+   */
 
     this.titleContent.style.fontSize = '1rem';
     this.titleContent.style.letterSpacing = 'normal';
@@ -37,7 +38,6 @@ class TitleScaler {
     this.timeout = setTimeout(() => {
       this.isScaling = true;
       this.adjustTitleScale();
-      this._hasInitialScale = true; // never show spinner again after initial scale
     }, 300);
   }
 
