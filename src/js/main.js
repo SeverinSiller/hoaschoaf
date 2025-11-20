@@ -7,13 +7,13 @@ import {startTitleScaler} from "@/js/titleScaler";
 
 function init() {
     const spinner = document.querySelector('.loading-spinner');
-    if (spinner) spinner.classList.add('hidden');
 
     masonry;
     slider;
     hamburger();
 
     window.addEventListener('load', async () => {
+        if (spinner) spinner.classList.add('hidden');
         startTitleScaler();
     });
 
