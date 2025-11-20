@@ -5,6 +5,8 @@ class TitleScaler {
     this.titleContent = this.title.firstElementChild;
     this.timeout = null;
     this.isScaling = false;
+    this._hasInitialScale = false;
+
 
     window.addEventListener('resize', this.rebounce.bind(this));
     this.rebounce();
@@ -16,7 +18,11 @@ class TitleScaler {
       return;
     }
 
-    this.overlay.classList.remove('hidden');
+    // only show overlay for the first scale
+    if (!this._hasInitialScale) {
+      this.overlay.classList.remove('hidden');
+    }
+
     this.titleContent.style.fontSize = '1rem';
     this.titleContent.style.letterSpacing = 'normal';
     clearTimeout(this.timeout);
@@ -25,6 +31,7 @@ class TitleScaler {
     this.timeout = setTimeout(() => {
       this.isScaling = true;
       this.adjustTitleScale();
+      this._hasInitialScale = true; // never show spinner again after initial scale
     }, 300);
   }
 
@@ -39,7 +46,8 @@ class TitleScaler {
       const fontSize = parseFloat(getComputedStyle(this.titleContent).fontSize) / 16;
       const letterSpaces = this.title.textContent.length - 1;
 
-      if (this.titleWidth < contentWidth) this.rebounce();
+      // probably not needed, why make loop calls?
+      // if (this.titleWidth < contentWidth) this.rebounce();
 
       if (Math.abs(difference) < 1 || iterations > maxIterations) {
         this.titleContent.style.letterSpacing = `${Math.round(Math.abs(difference) / letterSpaces)}px`;
