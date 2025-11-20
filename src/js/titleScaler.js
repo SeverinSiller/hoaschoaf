@@ -1,9 +1,8 @@
 class TitleScaler {
   constructor() {
-    this.overlay = document.querySelector('.loading-spinner');
     this.title = document.querySelector('.bottom-text');
 
-    if (!this.overlay || !this.title) return; // defensive
+    if (!this.title) return; // defensive
 
     this.titleContent = this.title.firstElementChild;
     this.timeout = null;
@@ -61,7 +60,6 @@ class TitleScaler {
               `${Math.round(Math.abs(difference) / letterSpaces)}px`;
         }
         this.isScaling = false;
-        this.overlay.classList.add('hidden'); // hide overlay after done
         return;
       }
 
@@ -79,4 +77,6 @@ class TitleScaler {
   }
 }
 
-export const titleScaler = new TitleScaler();
+export function startTitleScaler() {
+  return new TitleScaler();
+}
