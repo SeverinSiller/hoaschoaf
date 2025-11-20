@@ -2,21 +2,28 @@ class TitleScaler {
   constructor() {
     this.overlay = document.querySelector('.loading-spinner');
     this.title = document.querySelector('.bottom-text');
+
+    if (!this.overlay || !this.title) return; // defensive
+
     this.titleContent = this.title.firstElementChild;
     this.timeout = null;
     this.isScaling = false;
+    this._lastWidth = -1;
     this._hasInitialScale = false;
 
-
     window.addEventListener('resize', this.rebounce.bind(this));
-    this.rebounce();
+    this.rebounce(); // first run
   }
 
   rebounce() {
     const currentWidth = window.innerWidth;
-    if (currentWidth === this._lastWidth) {
+
+    // only react if width really changed
+    if (currentWidth === this._lastWidth || this.isScaling) {
       return;
     }
+
+    this._lastWidth = currentWidth;
 
     // only show overlay for the first scale
     if (!this._hasInitialScale) {
@@ -26,7 +33,6 @@ class TitleScaler {
     this.titleContent.style.fontSize = '1rem';
     this.titleContent.style.letterSpacing = 'normal';
     clearTimeout(this.timeout);
-    if (this.isScaling) return;
 
     this.timeout = setTimeout(() => {
       this.isScaling = true;
@@ -46,18 +52,23 @@ class TitleScaler {
       const fontSize = parseFloat(getComputedStyle(this.titleContent).fontSize) / 16;
       const letterSpaces = this.title.textContent.length - 1;
 
-      // probably not needed, why make loop calls?
-      // if (this.titleWidth < contentWidth) this.rebounce();
+      // fixed: use local titleWidth, not this.titleWidth
+      // if (titleWidth < contentWidth) this.rebounce();  // probably not needed
 
       if (Math.abs(difference) < 1 || iterations > maxIterations) {
-        this.titleContent.style.letterSpacing = `${Math.round(Math.abs(difference) / letterSpaces)}px`;
+        if (letterSpaces > 0) {
+          this.titleContent.style.letterSpacing =
+              `${Math.round(Math.abs(difference) / letterSpaces)}px`;
+        }
         this.isScaling = false;
-        this.overlay.classList.add('hidden');
-
+        this.overlay.classList.add('hidden'); // hide overlay after done
         return;
       }
 
-      const increment = Math.abs(difference) > 100 ? 1 : Math.abs(difference) > 10 ? 0.1 : 0.01;
+      const increment =
+          Math.abs(difference) > 100 ? 1 :
+              Math.abs(difference) > 10 ? 0.1 :
+                  0.01;
 
       this.titleContent.style.fontSize = `${fontSize + increment}rem`;
       iterations++;
