@@ -1,5 +1,5 @@
-@use '../scss/mixins.scss' as m;
-@use '../scss/variables' as *;
+@use './mixins.scss' as m;
+@use './variables' as *;
 
 //samsung-internet fix - thanks samsung for not fixing the bug for over 4 years
 :root {
