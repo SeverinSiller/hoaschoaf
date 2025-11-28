@@ -1,16 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script type="module">
-      const isViteDev = typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.DEV;
-      if (!isViteDev) {
-        const p = location.pathname;
-        if (p !== '/docs/' && !p.startsWith('/docs/')) {
-          const nextPath = '/docs/' + (p.startsWith('/') ? p.slice(1) : p);
-          location.replace(nextPath + location.search + location.hash);
-        }
-      }
-    </script>
 
     <script>
       if (/SamsungBrowser/i.test(navigator.userAgent)) {
