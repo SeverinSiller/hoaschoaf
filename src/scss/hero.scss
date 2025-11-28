@@ -12,7 +12,8 @@
 
   background-image: url('/src/img/gruppenbild_hoaschoaf.png');
   background-repeat: no-repeat;
-  background-position: center bottom;
+  background-position: center;
+  background-size: contain;
 
   @include m.respond(mobile) {
     background-size: 115vw;
