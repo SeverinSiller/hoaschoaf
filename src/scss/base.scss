@@ -89,7 +89,7 @@ body {
       font-size: 14px;
       font-family: $font-regular-family;
       border-radius: 9px;
-      color: $font-regular-color;
+      color: var(--on-dark);
       margin: $regular-spacing;
       text-transform: uppercase;
       transition: background-color 200ms ease, color 200ms ease, box-shadow 200ms ease;
@@ -104,7 +104,7 @@ body {
       }
 
       &:hover {
-        background-color: $secondary-color;
+        background-color: var(--surface);
         color: $emphasis-color;
         box-shadow: 0 0 20px $emphasis-color;
       }
@@ -185,6 +185,7 @@ body {
       position: relative;
       z-index: 100;
       line-height: 100%;
+      color: var(--on-dark);
 
       .top {
         align-self: flex-start;
@@ -219,30 +220,41 @@ body {
     }
 
     .event-info {
-      border-bottom: 1px solid white;
+      border-bottom: 1px solid var(--border);
+
+      // Datum und Beschreibung sind bewusst gleich groß
+      $event-size: 2.25rem;
+      $event-size-desktopS: 2rem;
+      $event-size-laptop: 1.75rem;
+      $event-size-tablet: 1.5rem;
+      $event-size-mobile: 1.125rem;
+      // Die Datumsschrift (Elsie Swash) wirkt bei gleicher Größe kleiner, daher leicht größer gesetzt
+      $date-size: 2.9rem;
+      $date-size-desktopS: 2.6rem;
+      $date-size-laptop: 2.25rem;
+      $date-size-tablet: 1.95rem;
+      $date-size-mobile: 1.5rem;
 
       .day-info {
         display: flex;
         flex-direction: column;
-        padding-bottom: 10%;
-        padding-top: 10%;
+        padding-bottom: 2rem;
+        padding-top: 2rem;
+
+        @include m.respond(tablet-down) {
+          padding-bottom: 1.5rem;
+          padding-top: 1.5rem;
+        }
 
         @include m.respond(mobile) {
-          padding-bottom: 3%;
+          padding-bottom: 0.25rem;
+          padding-top: 1.25rem;
         }
 
         .weekday {
           font-family: $font-regular-family;
-          font-size: $font-regular-size;
+          font-size: $font-regular-size-laptop;
           font-weight: $font-regular-weight;
-
-          @include m.respond(desktopS) {
-            font-size: $font-regular-size-desktopS;
-          }
-
-          @include m.respond(laptop) {
-            font-size: $font-regular-size-laptop;
-          }
 
           @include m.respond(tablet) {
             font-size: $font-regular-size-tablet;
@@ -256,284 +268,56 @@ body {
         .date {
           font-family: $font-accent-family;
           color: $font-headings-color;
-          font-size: $font-h3-size;
+          font-size: $date-size;
           white-space: nowrap;
 
           @include m.respond(desktopS) {
-            font-size: $font-h3-size-desktopS;
+            font-size: $date-size-desktopS;
           }
 
           @include m.respond(laptop) {
-            font-size: $font-h3-size-laptop;
+            font-size: $date-size-laptop;
           }
 
           @include m.respond(tablet) {
-            font-size: $font-h3-size-tablet;
+            font-size: $date-size-tablet;
           }
 
           @include m.respond(mobile) {
-            font-size: $font-h3-size-mobile;
+            font-size: $date-size-mobile;
           }
         }
       }
 
       .location {
         font-family: $font-regular-family;
-        font-size: $font-regular-size;
+        font-size: $event-size;
         font-weight: $font-regular-weight;
         color: $font-regular-color;
         padding-left: 7.5%;
+        vertical-align: middle;
 
         @include m.respond(desktopS) {
-          font-size: $font-regular-size-desktopS;
+          font-size: $event-size-desktopS;
         }
 
         @include m.respond(laptop) {
-          font-size: $font-regular-size-laptop;
+          font-size: $event-size-laptop;
         }
 
         @include m.respond(tablet) {
-          font-size: $font-regular-size-tablet;
+          font-size: $event-size-tablet;
         }
 
         @include m.respond(mobile) {
-          font-size: $font-regular-size-mobile;
-          padding: 0 0 5% 0;
+          font-size: $event-size-mobile;
+          padding: 0 0 1.25rem 0;
         }
       }
     }
 
     :last-child {
       border-bottom: none;
-    }
-  }
-}
-
-.band-members-slider {
-  position: relative;
-  width: 100%;
-  height: 50rem;
-  overflow: hidden;
-
-  @include m.respond(desktopS) {
-    height: 40rem;
-  }
-
-  @include m.respond(laptop) {
-    height: 30rem;
-  }
-
-  @include m.respond(tablet-down) {
-    height: 20rem;
-  }
-
-  h3 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: $font-h3-size;
-    text-shadow: 0px 0px 20px black;
-    color: $font-headings-color;
-    font-family: $font-headings-family;
-    z-index: 1000;
-    pointer-events: none;
-    text-align: center;
-    white-space: nowrap;
-
-    @include m.respond(desktopS) {
-      font-size: $font-h3-size-desktopS;
-    }
-
-    @include m.respond(laptop) {
-      font-size: $font-h3-size-laptop;
-    }
-
-    @include m.respond(tablet) {
-      font-size: $font-h3-size-tablet;
-    }
-
-    @include m.respond(mobile) {
-      font-size: $font-h3-size-mobile;
-    }
-  }
-
-  .members {
-    position: absolute;
-    top: 0;
-    width: 25%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-    user-select: none;
-
-    &::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    &::after {
-      content: attr(data-overlay-text);
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: $font-regular-size;
-      font-family: $font-accent-family;
-      font-weight: bold;
-      color: $font-regular-color;
-      transform: translateX(-7.5%);
-      text-shadow: 0 0 20px white;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-
-      @include m.respond(desktopS) {
-        font-size: $font-regular-size-desktopS;
-      }
-
-      @include m.respond(laptop) {
-        font-size: $font-regular-size-laptop;
-      }
-
-      @include m.respond(tablet) {
-        font-size: $font-regular-size-tablet;
-      }
-
-      @include m.respond(mobile) {
-        font-size: $font-regular-size-mobile;
-      }
-    }
-  }
-
-  &:not(.is-sliding) {
-    .members:hover::before,
-    .members:hover::after {
-      opacity: 1;
-    }
-  }
-
-  &.is-sliding {
-    .members {
-      cursor: grabbing;
-      pointer-events: none;
-    }
-
-    .members::before,
-    .members::after {
-      opacity: 0;
-      transition: none;
-    }
-  }
-
-  @for $i from 1 through 10 {
-    .members:nth-child(#{$i}) {
-      $x: ($i - 1) * 80%;
-      transform: translateX($x);
-    }
-  }
-
-  .member1 {
-    background-image: url('../img/band-members-imgs/Bernhard_Hoaschoaf.jpg');
-    background-position: 20%;
-  }
-  .member2 {
-    background-image: url('../img/band-members-imgs/Elena_Hoaschoaf.jpg');
-  }
-  .member3 {
-    background-image: url('../img/band-members-imgs/Florian_Hoaschoaf.jpg');
-  }
-  .member4 {
-    background-image: url('../img/band-members-imgs/Jonas_Hoaschoaf.jpg');
-  }
-  .member5 {
-    background-image: url('../img/band-members-imgs/Matthias_Hoaschoaf.jpg');
-  }
-  .member6 {
-    background-image: url('../img/band-members-imgs/Max_Hoaschoaf.jpg');
-  }
-  .member7 {
-    background-image: url('../img/band-members-imgs/Nikolaus_Hoaschoaf.jpg');
-  }
-  .member8 {
-    background-image: url('../img/band-members-imgs/Severin_Hoaschoaf.jpg');
-  }
-  .member9 {
-    background-image: url('../img/band-members-imgs/Stefan_Hoaschoaf.jpg');
-  }
-  .member10 {
-    background-image: url('../img/band-members-imgs/Thomas_Hoaschoaf.jpg');
-    clip-path: inset(0 20% 0 0);
-    background-position: 60%;
-  }
-}
-
-.band-members-popup {
-  background-color: black;
-  height: 100vh;
-  width: 100%;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  z-index: 9999;
-
-  svg {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    width: 3rem;
-    height: 3rem;
-    fill: $secondary-color;
-  }
-
-  .band-member-popup-image {
-    width: 50%;
-    height: 60%;
-    background-image: url('/src/img/band-members-imgs/Thomas_Hoaschoaf.jpg');
-    background-size: cover;
-    background-position-y: 30%;
-  }
-
-  .band-members-popup-title {
-    position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    .band-member-name {
-      font-family: $font-headings-family;
-      font-weight: $font-headings-weight;
-      color: $font-headings-color;
-      font-size: $font-h2-size;
-      line-height: 100%;
-    }
-
-    .band-member-short-description {
-      font-family: $font-accent-family;
-      color: $font-headings-color;
-      font-size: $font-h3-size;
-      white-space: nowrap;
-      line-height: 100%;
-
-      @include m.respond(desktopS) {
-        font-size: $font-h3-size-desktopS;
-      }
-
-      @include m.respond(laptop) {
-        font-size: $font-h3-size-laptop;
-      }
-
-      @include m.respond(tablet) {
-        font-size: $font-h3-size-tablet;
-      }
-
-      @include m.respond(mobile) {
-        font-size: $font-h3-size-mobile;
-      }
     }
   }
 }
@@ -600,23 +384,14 @@ body {
     }
   }
 
-  .about-us-text-2 {
-    margin: $regular-spacing 0rem calc($regular-spacing * 2) 0rem;
-    padding: 0 0 calc($regular-spacing * 2) 0;
+  .about-us-text-1 {
+    line-height: 1.35;
+    margin: $regular-spacing 0rem calc($regular-spacing * 3) 0rem;
+    padding: 0 0 calc($regular-spacing * 3) 0;
 
     @include m.respond(tablet-down) {
-      margin: $regular-spacing-mobile 0rem calc($regular-spacing-mobile * 2) 0rem;
-      padding: 0 0 $regular-spacing-mobile 0;
-    }
-  }
-
-  .band-action-shots {
-    width: 100%;
-    display: flex;
-    column-gap: calc($regular-spacing / 2);
-
-    img {
-      width: 33.33%;
+      margin: $regular-spacing-mobile 0rem calc($regular-spacing-mobile * 3) 0rem;
+      padding: 0 0 calc($regular-spacing-mobile * 2) 0;
     }
   }
 }
@@ -698,7 +473,7 @@ body {
     font-family: $font-regular-family;
     font-size: $font-regular-size;
     font-weight: $font-regular-weight;
-    color: $font-regular-color;
+    color: var(--on-dark);
 
     @include m.respond(desktopS) {
       font-size: $font-regular-size-desktopS;
@@ -808,9 +583,13 @@ body {
   }
 
   .grid-item {
-    background: rgb(221, 0, 0);
+    background: var(--surface-alt);
+    border: 1px solid var(--border);
     margin-bottom: 20px;
     border-radius: 9px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
   }
   .grid-item--a {
     height: 20rem;

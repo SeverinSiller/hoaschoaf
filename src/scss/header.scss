@@ -28,7 +28,16 @@ header {
 
   /* Desktop-Navigation */
   nav {
-    color: $font-regular-color;
+    color: var(--on-dark);
+
+    a {
+      color: var(--on-dark);
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
+
+      &:hover {
+        color: $emphasis-color;
+      }
+    }
 
     ul {
       list-style: none;
@@ -164,7 +173,7 @@ header {
           a {
             font-family: $font-regular-family;
             font-size: $font-h3-size-mobile;
-            color: $font-regular-color;
+            color: var(--on-dark);
             text-transform: uppercase;
             letter-spacing: $font-nav-letter-spacing;
           }

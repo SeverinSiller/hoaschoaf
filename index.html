@@ -13,9 +13,9 @@
     <title>Hoaschoaf - Band Salzburg</title>
     <meta name="description" content="Die offizielle Website der Brassband Hoaschoaf" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="color-scheme" content="dark" />
-    <meta name="supported-color-schemes" content="dark" />
-    <meta name="theme-color" content="#0b0b0b" />
+    <meta name="color-scheme" content="light" />
+    <meta name="supported-color-schemes" content="light" />
+    <meta name="theme-color" content="#ffffff" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Elsie+Swash+Caps&family=Poppins:wght@400;900&display=swap" rel="stylesheet" />
@@ -28,6 +28,21 @@
   <body>
     <!-- HERO SEKTION UND HEADER -->
     <section class="hero-section" id="hero">
+      <video
+        class="hero-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="/videos/hoaschoaf-hero-poster.jpg"
+        aria-hidden="true"
+        tabindex="-1"
+      >
+        <source src="/videos/hoaschoaf-hero.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-shade"></div>
+
       <header>
         <a href="index.html"><img src="src/img/Hoaschoaf_Logo.svg"  alt="Hoaschoaf Logo" /></a>
 
@@ -41,15 +56,23 @@
         <nav class="header-nav">
           <ul>
             <li><a href="#events">Events</a></li>
-            <li><a href="#about-us">Über Uns</a></li>
+            <li><a href="#about">Über Uns</a></li>
             <li><a href="#contact">Kontakt</a></li>
           </ul>
         </nav>
       </header>
-      <h1 class="hero-title">
-        <span class="centered-text"><span class="left">Wir</span><span class="right">sind</span></span>
-        <span class="bottom-text emphasis"><span class="bottom-text-content">Hoaschoaf</span></span>
-      </h1>
+
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="centered-text"><span class="left">Wir</span><span class="right">sind</span></span>
+          <span class="bottom-text emphasis"><span class="bottom-text-content">Hoaschoaf</span></span>
+        </h1>
+        <p class="hero-sub">Der Sound für besondere Abende.</p>
+        <div class="hero-cta">
+          <a class="hero-btn" href="#contact">Jetzt anfragen <span aria-hidden="true">↗</span></a>
+          <a class="hero-link" href="#events">Events ansehen <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
     </section>
 
     <!-- ANSTEHENDE EVENTS SEKTION -->
@@ -57,126 +80,94 @@
       <div class="events-title">
         <h2>
           <span class="top">Anstehende</span>
-          <span class="bottom emphasis">Events / 26</span>
+          <span class="bottom emphasis">Events / 27</span>
         </h2>
       </div>
       <table class="event-table">
         <tr class="event-info">
-          <td class="day-info"><span class="weekday emphasis">Samstag</span><span class="date">24. Jänner</span></td>
-          <td class="location">Maturaball Holztechnikum Kuchl in der Alten Saline Hallein</td>
+          <td class="day-info"><span class="weekday emphasis">Samstag</span><span class="date">9. Jänner</span></td>
+          <td class="location">Annahofball im Stieglkeller</td>
         </tr>
         <tr class="event-info">
-          <td class="day-info"><span class="weekday emphasis">Samstag</span><span class="date">21. März</span></td>
-          <td class="location">Herzaljogd im Zieglstadel Hallein</td>
+          <td class="day-info"><span class="weekday emphasis">Samstag</span><span class="date">16. Jänner</span></td>
+          <td class="location">HTK Maturaball im Zentrum der Visionen Puch</td>
         </tr>
         <tr class="event-info">
-          <td class="day-info"><span class="weekday emphasis">Donnerstag</span><span class="date">30. April</span></td>
-          <td class="location">Maturaball der HAK Hallein im Ziegelstadel Hallein</td>
+          <td class="day-info"><span class="weekday emphasis">Montag</span><span class="date">8. Februar</span></td>
+          <td class="location">Dirndlball in Eugendorf</td>
         </tr>
         <tr class="event-info">
-          <td class="day-info"><span class="weekday emphasis">Freitag</span><span class="date">12. Juni</span></td>
-          <td class="location">175 Jahre Trachtenmusikkapelle Golling</td>
+          <td class="day-info"><span class="weekday emphasis">Samstag</span><span class="date">26. Juni</span></td>
+          <td class="location">100 Jahre Löschzug Wiestal</td>
         </tr>
         <tr class="event-info">
-          <td class="day-info"><span class="weekday emphasis">Samstag</span><span class="date">13. Juni</span></td>
-          <td class="location">Privat</td>
+          <td class="day-info"><span class="weekday emphasis">Samstag</span><span class="date">28. August</span></td>
+          <td class="location">75 Jahre Landjugend Zederhaus</td>
         </tr>
         <tr class="event-info">
-          <td class="day-info"><span class="weekday emphasis">Samstag</span><span class="date">20. Juni</span></td>
-          <td class="location">Feuerwehrfest in Bruck an der Glocknerstraße</td>
-        </tr>
-        <tr class="event-info">
-          <td class="day-info"><span class="weekday emphasis">Samstag</span><span class="date">27. Juni</span></td>
-          <td class="location">Privat</td>
-        </tr>
-        <tr class="event-info">
-          <td class="day-info"><span class="weekday emphasis">Samstag</span><span class="date">26. September</span></td>
-          <td class="location">Privat</td>
-        </tr>
-        <tr class="event-info">
-          <td class="day-info"><span class="weekday emphasis">Samstag</span><span class="date">10. Oktober</span></td>
-          <td class="location">Maturaball der BAfEP Salzburg im Zentrum der Visionen</td>
-        </tr>
-        <tr class="event-info">
-          <td class="day-info"><span class="weekday emphasis">Samstag</span><span class="date">24. Oktober</span></td>
-          <td class="location">Ball der Modeschule Hallein in der Salzberghalle Hallein</td>
+          <td class="day-info"><span class="weekday emphasis">Samstag</span><span class="date">4. September</span></td>
+          <td class="location">St. Leonharder Kirtag</td>
         </tr>
       </table>
     </section>
 
-    <!-- BANDMITGLIEDER ÜBERSICHTS SEKTION -->
-    <section class="band-members" id="about-us">
-      <div class="band-members-slider">
-        <h3 class="band-members-slider-title">Die Crew</h3>
-
-        <a href="maintainence.html">
-          <div data-overlay-text="Bernhard" class="members member1"></div>
-        </a>
-        <a href="maintainence.html">
-          <div data-overlay-text="Elena" class="members member2"></div>
-        </a>
-        <a href="maintainence.html">
-          <div data-overlay-text="Florian" class="members member3"></div>
-        </a>
-        <a href="maintainence.html">
-          <div data-overlay-text="Jonas" class="members member4"></div>
-        </a>
-        <a href="maintainence.html">
-          <div data-overlay-text="Matthias" class="members member5"></div>
-        </a>
-        <a href="maintainence.html">
-          <div data-overlay-text="Max" class="members member6"></div>
-        </a>
-        <a href="maintainence.html">
-          <div data-overlay-text="Nikolaus" class="members member7"></div>
-        </a>
-        <a href="maintainence.html">
-          <div data-overlay-text="Severin" class="members member8"></div>
-        </a>
-        <a href="maintainence.html">
-          <div data-overlay-text="Stefan" class="members member9"></div>
-        </a>
-        <a href="maintainence.html">
-          <div data-overlay-text="Thomas" class="members member10"></div>
-        </a>
-      </div>
-    </section>
-
-    <!--
-    <div class="band-members-popup">
-      <svg>
-        <use href="src/img/Icons/icons.svg#close" />
-      </svg>
-      <div class="band-member-popup-image"></div>
-      <div class="band-members-popup-title">
-        <p class="band-member-name">Thomas</p>
-        <p class="band-member-short-description">Spaßvogel mit Ehrlichkeitsgarantie</p>
-      </div>
-    </div>
--->
-
     <!-- ÜBER UNS SEKTION -->
-    <section class="about-us">
+    <section class="about-us" id="about">
       <h2>
         <span>Leidenschaft!</span>
         <span class="sr-only">Über Uns</span>
       </h2>
       <p class="about-us-text-1">
-        Wir sind eine <span class="emphasis">Band aus Salzburg</span> mit 10 leidenschaftlichen Musikerinnen und Musikern. Unser breitgefächertes
-        Repertoire reicht von mitreißenden <span class="emphasis">Brass-Sounds</span> über <span class="emphasis">Tanzmusik</span> bis zu
-        <span class="emphasis">Partyhits</span>.
+        Zehn Musikerinnen und Musiker aus <span class="emphasis">Salzburg</span>, ein Ziel: Die <span class="emphasis">Tanzfläche soll glühen</span>.
+        Egal ob <span class="emphasis">Zeltfeste, Bälle, Hochzeiten</span> – wir bieten für jede Veranstaltung den richtigen Sound: Von
+        <span class="emphasis">böhmischer Tanzmusik</span> bis zu aktuellen <span class="emphasis">Partyhits</span>.
       </p>
-      <p class="about-us-text-2">
-        Ob <span class="emphasis">Bälle, Zeltfeste, Firmenfeiern</span> oder <span class="emphasis">andere besondere Anlässe:</span> Wir sorgen für
-        die passende Musik und garantieren beste Stimmung!
-      </p>
-      <div class="band-action-shots">
-        <img
-          src="src/img/band-action-shots-imgs/band-action-shot-01.png"
-          alt="Hoaschoaf Band-Mitglied spielt ein Brassinstrument live auf der Bühne"
-        />
-        <img src="src/img/band-action-shots-imgs/band-action-shot-02.png" alt="Hoaschof Band-Mitglied singt live auf der Bühne" />
-        <img src="src/img/band-action-shots-imgs/band-action-shot-03.png" alt="Hoaschoaf Band-Mitglied spielt E-Gitarre live auf der Bühne" />
+    </section>
+
+    <!-- EINBETTUNGEN: INSTAGRAM / YOUTUBE / SPOTIFY -->
+    <section class="embeds" id="embeds">
+      <h2>
+        <span>Hoaschoaf live</span>
+        <span class="sr-only">Social Media und Musik</span>
+      </h2>
+      <div class="embeds-grid">
+        <a class="embed-card embed-instagram" href="https://instagram.com/hoaschoaf_" target="_blank" rel="noopener">
+          <img src="src/img/Icons/instagram.svg" alt="" class="embed-icon" />
+          <span class="embed-card-title">@hoaschoaf_</span>
+          <span class="embed-card-sub">Folgt uns auf Instagram</span>
+        </a>
+
+        <div class="embed-card embed-video">
+          <iframe
+            src="https://www.youtube.com/embed/mAN45d1GWXI"
+            title="Hoaschoaf auf YouTube"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <div class="embed-card embed-spotify">
+          <iframe
+            src="https://open.spotify.com/embed/artist/0q1HOyl309M0BZNWiwTeqb?utm_source=generator"
+            title="Hoaschoaf auf Spotify"
+            frameborder="0"
+            allowfullscreen
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- BILDER GALERIE SEKTION -->
+    <section class="gallery" id="gallery">
+      <div class="grid" data-colcade="columns: .grid-col, items: .grid-item">
+        <div class="grid-col grid-col--1"></div>
+        <div class="grid-col grid-col--2"></div>
+        <div class="grid-col grid-col--3"></div>
+        <div class="grid-col grid-col--4"></div>
       </div>
     </section>
 
@@ -200,21 +191,11 @@
       </a>
     </section>
 
-    <!-- BILDER GALERIE SEKTION -->
-    <section class="gallery">
-      <div class="grid" data-colcade="columns: .grid-col, items: .grid-item">
-        <div class="grid-col grid-col--1"></div>
-        <div class="grid-col grid-col--2"></div>
-        <div class="grid-col grid-col--3"></div>
-        <div class="grid-col grid-col--4"></div>
-      </div>
-    </section>
-
     <!-- FOOTER -->
     <footer>
       <ul>
-        <li><a href="maintainence.html">Impressum</a></li>
-        <li><a href="maintainence.html">Datenschutz</a></li>
+        <li><a href="impressum.html">Impressum</a></li>
+        <li><a href="datenschutz.html">Datenschutz</a></li>
       </ul>
       <a href="index.html"><img src="src/img/Hoaschoaf_Alternative_Logo.svg" alt="Hoaschoaf Alternative Logo" /></a>
     </footer>

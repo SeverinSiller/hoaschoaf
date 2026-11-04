@@ -18,7 +18,7 @@ footer {
       font-family: $font-regular-family;
       font-size: $font-nav-size;
       letter-spacing: $font-nav-letter-spacing;
-      color: $font-regular-color;
+      color: var(--on-dark);
       padding-left: 1rem;
       transition: transform 0.2s ease-in;
 
@@ -32,8 +32,11 @@ footer {
       }
 
       a {
+        color: var(--on-dark);
+
         &:hover {
-          color: white;
+          color: var(--on-dark);
+          opacity: 0.75;
         }
       }
     }

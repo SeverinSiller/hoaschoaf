@@ -1,4 +1,4 @@
-export const SHOW_HOW_MANY_LATEST_IMGS = 15;
+export const SHOW_HOW_MANY_LATEST_IMGS = 30;
 
 export const SLIDER_SPEED = 20;
 export const SLIDER_MAX_STEP = 2;
